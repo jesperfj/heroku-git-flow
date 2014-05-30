@@ -18,7 +18,7 @@ class Heroku::Command::Deploy < Heroku::Command::Base
     begin
       git("archive #{branch} --format tar.gz -o #{file.path}.tar.gz")
       version = git("rev-parse #{branch}")
-      print("Uploading tarball for branch #{branch}...")
+      print("Uploading source tarball for branch #{branch}...")
       drop = Heroku::HDrop::DropFile.new
       drop.upload(file.path+'.tar.gz')
       puts(" done")

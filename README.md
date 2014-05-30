@@ -42,7 +42,7 @@ Now clone the code down to your personal development environment with:
 Thanks to app.json and Heroku's new setup service, you can bootstrap the app on Heroku as simple as:
 
     $ heroku setup
-    Uploading tarball for master branch... done
+    Uploading source tarball for branch master... done
     Setting up new Heroku app for branch master........ done
     Branch master now deploys to powerful-retreat-3783
 
@@ -66,7 +66,7 @@ It'll look something like this:
     [master c217eb3] edits
      1 file changed, 1 insertion(+), 1 deletion(-)
     $ heroku deploy
-    Uploading tarball for branch master... done
+    Uploading source tarball for branch master... done
     Deploying branch master (commit c217eb3457) to powerful-retreat-3783.... done
 
     -----> Node.js app detected
@@ -124,7 +124,7 @@ Write some code, then commit and push branch to origin
 Set up a Heroku app for this topic branch:
 
     $ heroku setup
-    Uploading tarball for new-feature branch... done
+    Uploading source tarball for branch new-feature... done
     Setting up new Heroku app for branch new-feature.......... done
     Branch new-feature now deploys to mighty-garden-7523
 
@@ -135,8 +135,8 @@ That's it. You have your very own Heroku deployment for this topic branch. Check
 You can see how your branches are targeted to different Heroku apps with:
 
     $ heroku target
-        master -> powerful-retreat-3783
-        new-feature -> mighty-garden-7523
+    master -> powerful-retreat-3783
+    new-feature -> mighty-garden-7523
 
 ### Deploying new code from the topic branch
 
@@ -150,7 +150,7 @@ The `setup` command performs first time setup, creating the app and provisioning
 Then deploy:
 
     $ heroku deploy
-    Uploading tarball for branch new-feature... done
+    Uploading source tarball for branch new-feature... done
     Deploying branch new-feature (commit ab821a2298) to mighty-garden-7523.... done
 
     -----> Node.js app detected

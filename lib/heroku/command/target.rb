@@ -7,7 +7,7 @@ class Heroku::Command::Target < Heroku::Command::Base
   def index
     git("config --get-regexp branch\\..*\\.heroku").split("\n").each { |t|
       cols = t.split
-      puts "    #{cols[0].split('.')[1]} -> #{cols[1]}"
+      puts "#{cols[0].split('.')[1]} -> #{cols[1]}"
     }
   end
 

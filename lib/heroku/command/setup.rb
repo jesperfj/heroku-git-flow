@@ -13,7 +13,7 @@ class Heroku::Command::Setup < Heroku::Command::Base
       branch = git("symbolic-ref --short -q HEAD")
       git("archive #{branch} --format tar.gz -o #{file.path}.tar.gz")
       # pro-tip: you can get commit hash from tarball with git("get-tar-commit-id #{file.path}.tar.gz")
-      print("Uploading tarball for #{branch} branch...")
+      print("Uploading source tarball for branch #{branch}...")
       drop = Heroku::HDrop::DropFile.new
       drop.upload(file.path+'.tar.gz')
       puts(" done")
