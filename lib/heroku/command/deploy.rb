@@ -22,7 +22,7 @@ class Heroku::Command::Deploy < Heroku::Command::Base
       drop = Heroku::HDrop::DropFile.new
       drop.upload(file.path+'.tar.gz')
       puts(" done")
-      print "Deploying branch #{branch} (commit #{version[0..9]}) to #{app}"
+      print "Deploying branch #{branch} (commit #{version[0..9]}) to #{app}."
       build = api.start_build(drop.get, app, version)
       build = api.build_result(app, build['id'])
       while(build['build']['status'] == 'pending')

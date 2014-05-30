@@ -17,7 +17,7 @@ class Heroku::Command::Setup < Heroku::Command::Base
       drop = Heroku::HDrop::DropFile.new
       drop.upload(file.path+'.tar.gz')
       puts(" done")
-      print "Setting up new Heroku app for branch #{branch}"
+      print "Setting up new Heroku app for branch #{branch}."
       setup = api.start_setup(drop.get)
       while(setup['status'] == 'pending')
         print('.')
