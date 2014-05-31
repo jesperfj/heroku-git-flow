@@ -8,7 +8,7 @@ class Heroku::Command::Setup < Heroku::Command::Base
   # set up a new app deployment for a branch
   #
   def index
-    file = Tempfile.new('hdrop')
+    file = Tempfile.new('heroku')
     begin
       branch = git("symbolic-ref --short -q HEAD")
       git("archive #{branch} --format tar.gz -o #{file.path}.tar.gz")

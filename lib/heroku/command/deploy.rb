@@ -14,7 +14,7 @@ class Heroku::Command::Deploy < Heroku::Command::Base
     unless app
       error("Branch #{branch} does not target a Heroku app.\nUse heroku target:set to set a target app\nor use heroku setup to set up new app.")      
     end
-    file = Tempfile.new('hdrop')
+    file = Tempfile.new('heroku')
     begin
       git("archive #{branch} --format tar.gz -o #{file.path}.tar.gz")
       version = git("rev-parse #{branch}")
