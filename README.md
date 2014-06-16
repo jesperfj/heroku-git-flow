@@ -94,7 +94,7 @@ It'll look something like this:
 
 ## Team development with branch deployments
 
-Team development processes vary from place to place. This set of plugins are designed for a particular process used for web app development by many organizations and [documented by Github back in 2011](http://scottchacon.com/2011/08/31/github-flow.html):
+Team development processes vary from place to place. This plugin is designed for a particular process used for web app development by many organizations and [documented by Github back in 2011](http://scottchacon.com/2011/08/31/github-flow.html):
 
 * Anything in the master branch is deployable
 * To work on something new, create a descriptively named branch off of master (ie: new-oauth2-scopes)
