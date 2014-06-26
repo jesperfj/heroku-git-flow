@@ -94,7 +94,7 @@ It'll look something like this:
 
 ## Team development with branch deployments
 
-Team development processes vary from place to place. This set of plugins are designed for a particular process used for web app development by many organizations and [documented by Github back in 2011](http://scottchacon.com/2011/08/31/github-flow.html):
+Team development processes vary from place to place. This plugin is designed for a particular process used for web app development by many organizations and [documented by Github back in 2011](http://scottchacon.com/2011/08/31/github-flow.html):
 
 * Anything in the master branch is deployable
 * To work on something new, create a descriptively named branch off of master (ie: new-oauth2-scopes)
@@ -174,6 +174,28 @@ Then deploy:
            http://mighty-garden-7523.herokuapp.com/ deployed to Heroku
 
     Commit ab821a2298 on branch new-feature now running on mighty-garden-7523
+
+### Things to ponder
+
+As stated, deployment processes vary wildly. There are several separate goals to optimize for: fidelity, agility, collaboration, etc. You may want to hack on this plugin yourself to improve it further or to optimize for certain goals. For example:
+
+#### Deploy non-committed code
+
+Currently the tarball is created by git from checked in code. That means you have to commit your code before you deploy. Sometimes you may want to deploy before you commit if you're doing highly experimental stuff and you're deploying to a personal, throw-away app anyways. 
+
+I'll argue it's a small cost to commit first because you should be on a topic branch and you can squash commits before merging. But I can see some might want to skip the step. In particular, if you are not using git, you will need to make some changes. Note that you'll need to vendor a Ruby tar library into your plugin if you choose to tar up files on your own. You'll also need to invent a suitable version string, e.g. a manually calculated SHA checksum over your tarball.
+
+#### Deploy from your central repository instead of from local
+
+When you deploy, the tarball is built locally from the code on your machine. This introduces the risk that you may be deploying a version of the app with noone else having access to the source code (if you forget to push it). As long as you push your code, there should be no other concerns: the commit hash will uniquely identify the deployed version whether it came from your local machine or from your central repo service. But see next point for more thoughts.
+
+#### The build and deploy process is not centrally defined
+
+In this current implementation, every developer is responsible for setting up branch mappings to production, staging and topic deployments. I can choose to map staging branch to one app while my colleague choose to map it to another app. If I join a new team, there's no brain-dead-simple way for me to get set up with the right mappings. Two changes will move you in a more team-high-fidelity direction:
+
+* Always deploy branches stored in your central repo. That way, you're only deploying stuff that everyone else can see. This comes with some slight inconvenience but feels right for serious production environments.
+* Store branch mappings centrally. It's not too hard to build a service that manages branch mappings for you, but you will have to answer design questions around permissions which can get a bit tricky since you have two permission systems in play: your central repo service and Heroku.
+
 
 <!--
 ## Viewing past build outputs
